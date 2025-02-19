@@ -3,42 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso con Correo</title>
+    <title>Princesa</title>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            margin: 50px;
-            background-color: #f4f4f4;
-        }
-        #formulario { 
-            max-width: 300px; 
-            margin: auto; 
-            padding: 20px; 
-            background: white;
-            border: 1px solid #ccc; 
-            border-radius: 5px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-        }
-        p { 
-            font-size: 14px; 
-            color: #333; 
-            margin-bottom: 15px;
-        }
-        input, button { 
-            width: 100%; 
-            padding: 10px; 
-            margin-top: 10px;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        #formulario { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        #mensaje { font-style: italic; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <div id="formulario">
-        <p><em>👸👶🧡🖤 M’ha semblat que la lletra resumeix perfectament la nostra situació (i com és bonica potser et fa recordar lo guapets que som quan estem junts i lo bonic que pot arribar a ser lo nostre amor...) 👸👶🧡🖤</em></p>
-        <h2>Ingresa tu correo</h2>
-        <input type="email" id="emailInput" placeholder="Tu correo electrónico" required>
+        <h2 id="mensaje">
+            👸🏻👶🏻🧡🖤 M’ha semblat que la lletra resumeix perfectament la nostra situació 
+            (i com és bonica potser et fa recordar lo guapets que som quan estem junts 
+            i lo bonic que pot arribar a ser lo nostre amor...) 👸🏻👶🏻🧡🖤
+        </h2>
+        <input type="email" id="emailInput" placeholder="El teu correu electrònic" required>
         <button onclick="guardarCorreo()">Acceder</button>
     </div>
 
@@ -50,8 +31,14 @@
 
         function guardarCorreo() {
             let email = document.getElementById("emailInput").value;
-            if (!email.includes("@") || !email.includes(".")) {
-                alert("Por favor, ingresa un correo válido.");
+            const correosPermitidos = [
+                "ainabeltran98@gmail.com",
+                "leix.nf@gmail.com",
+                "aleixnf@gmail.com"
+            ];
+
+            if (!correosPermitidos.includes(email)) {
+                alert("Este correo no tiene acceso. Solo pueden acceder usuarios autorizados.");
                 return;
             }
 
@@ -60,7 +47,7 @@
 
             // Enviar notificación por email con los datos correctos
             let data = {
-                email: email,  // Asegurar que coincide con la plantilla de EmailJS
+                email: email,  
                 fecha: new Date().toLocaleString()
             };
 
