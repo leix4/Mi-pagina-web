@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso con Correo</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        #formulario { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div id="formulario">
+        <h2>Ingresa tu correo</h2>
+        <input type="email" id="emailInput" placeholder="Tu correo electrónico" required>
+        <button onclick="guardarCorreo()">Acceder</button>
+    </div>
+
+    <script>
+        // Configurar EmailJS
+        (function(){
+            emailjs.init("c0d_JksyVxvz9j9Go"); // Reemplaza con tu clave pública
+        })();
+
+        function guardarCorreo() {
+            let email = document.getElementById("emailInput").value;
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("Por favor, ingresa un correo válido.");
+                return;
+            }
+
+            // Guardar el correo en localStorage
+            localStorage.setItem("userEmail", email);
+
+            // Enviar notificación por email con los datos correctos
+            let data = {
+                email: email,  // Asegurar que coincide con la plantilla de EmailJS
+                fecha: new Date().toLocaleString()
+            };
+
+            emailjs.send("service_5nijz97", "template_aqknp4f", data)
+            .then(() => {
+                console.log("Correo enviado correctamente:", email);
+                // Redirigir automáticamente al video de YouTube
+                window.location.href = "https://youtu.be/EP-zEsS4lJY?si=CsEmPNGz0OWVtb5q";
+            }, (error) => {
+                console.error("Error al enviar email:", error);
+                alert("Hubo un problema al enviar la notificación.");
+            });
+        }
+    </script>
+
+</body>
+</html>
