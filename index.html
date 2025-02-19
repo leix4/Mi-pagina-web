@@ -6,13 +6,37 @@
     <title>Acceso con Correo</title>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
-        #formulario { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        #formulario { 
+            max-width: 300px; 
+            margin: auto; 
+            padding: 20px; 
+            background: white;
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+        p { 
+            font-size: 14px; 
+            color: #333; 
+            margin-bottom: 15px;
+        }
+        input, button { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
     <div id="formulario">
+        <p><em>👸👶🧡🖤 M’ha semblat que la lletra resumeix perfectament la nostra situació (i com és bonica potser et fa recordar lo guapets que som quan estem junts i lo bonic que pot arribar a ser lo nostre amor...) 👸👶🧡🖤</em></p>
         <h2>Ingresa tu correo</h2>
         <input type="email" id="emailInput" placeholder="Tu correo electrónico" required>
         <button onclick="guardarCorreo()">Acceder</button>
