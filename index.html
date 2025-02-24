@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Princesa </title>
     <title> 🖤👸🏻Princesa👸🏻🖤 </title>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
         #formulario { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
         #mensaje { font-style: italic; margin-bottom: 20px; }
+        #enlace { display: none; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -21,6 +23,9 @@
         </h2>
         <input type="email" id="emailInput" placeholder="El teu correu electrònic" required>
         <button onclick="guardarCorreo()">Accedir</button>
+        <div id="enlace">
+            <a href="https://www.youtube.com/watch?v=EP-zEsS4lJY" target="_blank">🎵 Veure el vídeo 🎵</a>
+        </div>
     </div>
 
     <script>
@@ -54,8 +59,8 @@
             emailjs.send("service_5nijz97", "template_aqknp4f", data)
             .then(() => {
                 console.log("Correo enviado correctamente:", email);
-                // Redirigir automáticamente al video de YouTube
-                window.location.href = "https://youtu.be/EP-zEsS4lJY?si=CsEmPNGz0OWVtb5q";
+                // Mostrar el enlace al video de YouTube
+                document.getElementById("enlace").style.display = "block";
             }, (error) => {
                 console.error("Error al enviar email:", error);
                 alert("Hubo un problema al enviar la notificación.");
